@@ -5,7 +5,21 @@ import {
     ButtonGroup,
   } from "react-bootstrap";
 
-export const PostList = () => {
+export const PostList = ({data}) => {
+  const records = data.map((post, index)=>{
+    <tr key={post.id}>
+    <td>{++index}</td>
+    <td>{post.title}</td>
+    <td>
+      <ButtonGroup aria-label="Basic example">
+        <Button variant="success">Edit</Button>
+        <Button variant="danger">Delete</Button>
+      </ButtonGroup>
+    </td>
+  </tr>
+    
+  }) ;
+
   return (
     <Table striped bordered hover>
     <thead>
@@ -16,16 +30,9 @@ export const PostList = () => {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>#1</td>
-        <td>this is title 1</td>
-        <td>
-          <ButtonGroup aria-label="Basic example">
-            <Button variant="success">Edit</Button>
-            <Button variant="danger">Delete</Button>
-          </ButtonGroup>
-        </td>
-      </tr>
+      {records     
+      }
+      
     </tbody>
   </Table>
   )
